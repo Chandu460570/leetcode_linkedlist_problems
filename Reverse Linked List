@@ -1,0 +1,20 @@
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+        if not head:
+            return head
+        
+        prev = None
+        iter = head
+        while iter.next:
+            after = iter.next
+            iter.next = prev
+            prev = iter
+            iter = after
+        
+        iter.next = prev
+        head = iter
+        return head
